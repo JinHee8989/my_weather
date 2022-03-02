@@ -27,7 +27,7 @@ export default function App() {
     setCity(location[0].city);
     const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=alert&appid=${API_KEY}`);
     const json = await response.json();
-    console.log(json);
+    //setDays(json.daily);
 
   }
   useEffect(()=>{ask();},[])
@@ -38,10 +38,7 @@ export default function App() {
       <Text style = {styles.cityName}>{city}</Text>
     </View>
     <ScrollView pagingEnabled showsHorizontalScrollIndicator={false} horizontal contentContainerStyle = {styles.wheather}>
-      <View style = {styles.day}>
-        <Text style = {styles.temp}>27</Text>
-        <Text style={styles.desc}>Sunny</Text>
-      </View>
+      {days.length === 0 ? "" : (<View style = {styles.day}></View>)}
     </ScrollView>
     
   </View>
